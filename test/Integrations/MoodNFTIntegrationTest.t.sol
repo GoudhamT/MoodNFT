@@ -25,4 +25,17 @@ contract MoodNFTIntegrationsTest is Test {
                 keccak256(abi.encodePacked(happyURI))
         );
     }
+
+    function testFlipMood() public {
+        vm.prank(USER);
+        moodNFT.mintNFT();
+
+        vm.prank(USER);
+        moodNFT.flipMood(0);
+        assert(
+            keccak256(abi.encodePacked(happyURI)) !=
+                keccak256(abi.encodePacked(moodNFT.tokenURI(0)))
+        );
+        console.log(moodNFT.tokenURI(0));
+    }
 }
