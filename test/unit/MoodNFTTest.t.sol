@@ -3,7 +3,7 @@
 pragma solidity ^0.8.19;
 
 import {Test, console} from "forge-std/Test.sol";
-import {MoodNFT} from "../src/MoodNFT.sol";
+import {MoodNFT} from "../../src/MoodNFT.sol";
 
 contract MoodNFTTest is Test {
     MoodNFT moodNFT;
@@ -22,5 +22,9 @@ contract MoodNFTTest is Test {
         vm.prank(USER);
         moodNFT.mintNFT();
         console.log(moodNFT.tokenURI(0));
+        // assert(
+        //     keccak256(abi.encodePacked(moodNFT.tokenURI(0))) ==
+        //         keccak256(abi.encodePacked(HAPPY_SVG_URI))
+        // );
     }
 }
